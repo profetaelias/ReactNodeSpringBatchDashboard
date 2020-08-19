@@ -12,7 +12,12 @@ const BatchStepExecution = require('../model/BatchStepExecution');
 
 router.get('/jobs', async (req, res, next) => {
   try {
-    const executions = await BatchJobExecution.findAll();
+    const executions = await BatchJobExecution.findAll({
+      order: [
+        ['job_execution_id', 'DESC'], 
+      ],
+      limit: 10
+    });
     res.json(executions);
   } catch (err) {
     next(err);
@@ -32,7 +37,10 @@ router.get('/steps', async (req, res, next) => {
       where: {
         // eslint-disable-next-line quote-props
         job_execution_id: id
-      }
+      },
+      order: [
+        ['step_execution_id', 'ASC'], 
+      ],
     });
     console.log(steps);
     res.json(steps);
