@@ -2,6 +2,7 @@
 /* eslint-disable indent */
 const { DataTypes } = require('sequelize');
 const db = require('../db/config/index');
+const BatchJobInstance = require('./BatchJobInstance');
 
 const BatchJobExecution = db.define('batchJobExecution', {
       job_execution_id: {
@@ -50,4 +51,5 @@ const BatchJobExecution = db.define('batchJobExecution', {
     timestamps: false,
 });
 
+BatchJobExecution.belongsTo(BatchJobInstance, {as: 'BatchJobInstance', foreignKey: 'job_instance_id'});
 module.exports = BatchJobExecution;

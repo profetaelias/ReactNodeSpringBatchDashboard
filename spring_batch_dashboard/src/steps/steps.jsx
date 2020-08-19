@@ -18,10 +18,8 @@ export default class Steps extends Component {
     
     async componentDidMount() {
         const { params: { id }} = this.props.match;
-        console.log(id)
         this.consultarStepsPorJob(id);
-
-      }
+    }
     
     render() {
         return (

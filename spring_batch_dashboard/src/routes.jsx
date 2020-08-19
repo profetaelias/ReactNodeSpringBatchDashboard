@@ -8,7 +8,8 @@ export default props => (
     <div>
       <Switch>
         {/* Using the `component` prop */}
-        <Route path="/jobs" component={Jobs} />
+        <Route path="/jobs/:name" component={Jobs} />
+        <Route path="/jobs/" component={Jobs} />
 
         {/* Using the `render` prop */}
         <Route path="/steps/:id" component={Steps}/>

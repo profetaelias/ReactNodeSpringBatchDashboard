@@ -1,11 +1,12 @@
 /* eslint-disable indent */
 const Sequelize = require('sequelize');
+require('dotenv').config();
 
-module.exports = new Sequelize('hml_sisbajud', 'sisbajud_intranet', 'dataprev00', {
-    host: 'n211h021567.fast.prevnet',
-    port: '55432',
-    dialect: 'postgres',
-    schema: 'sisbajud_spgbat',
+module.exports = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: process.env.DB_DIALECT,
+    schema: process.env.DB_SCHEMA,
     pool: {
         max: 5,
         min: 0,
